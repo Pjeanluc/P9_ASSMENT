@@ -7,7 +7,7 @@ public class Patient {
     private long id;
     private String firstname;
     private String lastname;
-    private LocalDate birthdate;
+    private LocalDate birthDate;
     private String genre;
     private String address;
     private String phoneNumber;
@@ -15,12 +15,14 @@ public class Patient {
     public Patient() {
     }
 
-    public Patient(long id, String firstname, String lastname, LocalDate birthdate, String sex) {
+    public Patient(long id, String firstname, String lastname, LocalDate birthDate, String genre, String address, String phoneNumber) {
         this.id = id;
         this.firstname = firstname;
         this.lastname = lastname;
-        this.birthdate = birthdate;
-        this.genre = sex;
+        this.birthDate = birthDate;
+        this.genre = genre;
+        this.address = address;
+        this.phoneNumber = phoneNumber;
     }
 
     public long getId() {
@@ -47,19 +49,31 @@ public class Patient {
         this.lastname = lastname;
     }
 
-    public LocalDate getBirthdate() {
-        return birthdate;
-    }
+    public LocalDate getBirthDate() { return birthDate; }
 
-    public void setBirthdate(LocalDate birthdate) {
-        this.birthdate = birthdate;
-    }
+    public void setBirthDate(LocalDate birthDate) { this.birthDate = birthDate; }
 
-    public String getSex() {
+    public String getGenre() {
         return genre;
     }
 
-    public void setSex(String sex) {
-        this.genre = sex;
+    public void setGenre(String genre) {
+        this.genre = genre;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 }

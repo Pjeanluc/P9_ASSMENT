@@ -7,9 +7,10 @@ import com.ocr.axa.jlp.assessment.web.exception.ControllerException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -22,7 +23,7 @@ public class AssessmentController {
     AssessmentService assessmentService;
 
     @GetMapping("/id")
-    public ResponseEntity<Assessment> getAssessmentById(@RequestParam(required = true) Long patientId, @RequestParam(required = true) int assessmentId) {
+    public Assessment getAssessmentById(@RequestParam(required = true) Long patientId, @RequestParam(required = true) int assessmentId) {
 
         Assessment assessment = assessmentService.getAssessmentByPatient(patientId,assessmentId);
 
@@ -31,13 +32,13 @@ public class AssessmentController {
             throw new ControllerException("calcul assessment KO");
         } else {
             logger.info("calcul assessment  OK, patientId =" + patientId.toString());
-            return new ResponseEntity(assessment, HttpStatus.OK);
+            return assessment;
         }
 
     }
 
     @GetMapping("/family")
-    public ResponseEntity<List<Assessment>> getAssessmentById(@RequestParam(required = true) String familyName, @RequestParam(required = true) int assessmentId) {
+    public List<Assessment> getAssessmentByFamily(@RequestParam(required = true) String familyName, @RequestParam(required = true) int assessmentId) {
         List<Assessment> assessments = assessmentService.getAssessmentByFamilyName(familyName,assessmentId);
 
         if (assessments.isEmpty()) {
@@ -45,7 +46,7 @@ public class AssessmentController {
             throw new ControllerException("calcul assessment KO, list empty");
         } else {
             logger.info("calcul assessment for a family: OK, patientFamilyName=" + familyName);
-            return new ResponseEntity(assessments, HttpStatus.OK);
+            return assessments;
         }
 
     }

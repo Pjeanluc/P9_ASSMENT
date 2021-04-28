@@ -4,19 +4,9 @@ import java.time.LocalDate;
 
 public class Note {
     private String id;
-    private String textNote;
     private Long patientId;
-    private LocalDate dateNote;
-
-    public Note() {
-    }
-
-    public Note(String id, String textNote, Long patientId, LocalDate dateNote) {
-        this.id = id;
-        this.patientId = patientId;
-        this.textNote = textNote;
-        this.dateNote = dateNote;
-    }
+    private String note;
+    private LocalDate date;
 
     public String getId() {
         return id;
@@ -26,4 +16,27 @@ public class Note {
         this.id = id;
     }
 
+    public Long getPatientId() {
+        return patientId;
+    }
+
+    public void setPatientId(Long patientId) {
+        this.patientId = patientId;
+    }
+
+    public String getNote() {
+        return note;
+    }
+
+    public void setNote(String note) {
+        this.note = note;
+    }
+
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public void setDate(LocalDate date) {
+        this.date = date;
+    }
 }
